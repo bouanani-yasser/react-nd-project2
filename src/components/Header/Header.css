@@ -1,0 +1,41 @@
+header {
+   height: 8vh;
+   border-bottom: 3px solid #198754;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 5px 100px;
+}
+
+header .menu-items {
+   list-style: none;
+   display: flex;
+   justify-content: space-around;
+   margin: 0;
+}
+
+header .menu-items li {
+   margin: 0 10px;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+header .profile {
+   width: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+header .profile .username {
+   margin: 0 10px;
+}
+
+header .profile .avatar {
+   margin: 0 10px;
+}
+
+header .profile .btn {
+   font-weight: bold;
+   color: red;
+}

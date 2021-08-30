@@ -18,6 +18,6 @@ export function saveQuestion(question) {
    return _saveQuestion(question);
 }
 
-export function _saveQuestionAnswer(data) {
+export function saveQuestionAnswer(data) {
    return _saveQuestionAnswer(data);
 }

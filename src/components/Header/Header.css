@@ -14,10 +14,16 @@ header .menu-items {
    margin: 0;
 }
 
-header .menu-items li {
+header .menu-items a {
    margin: 0 10px;
    font-weight: bold;
    cursor: pointer;
+   text-decoration: none;
+   color: #222;
+}
+
+header .menu-items a.active {
+   color: #198754;
 }
 
 header .profile {

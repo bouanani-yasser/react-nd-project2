@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
+import { Route } from 'react-router-dom';
 
 import { initiateData } from '../actions/shared';
 import Home from './Home/Home';
@@ -19,9 +20,16 @@ function App({ dispatch }) {
       <>
          <LoadingBar style={{ backgroundColor: '#198754', height: '4px' }} />
          <Header />
-         {/* {!loading && <Home />} */}
-         {/* <NewQuestion /> */}
-         <LeaderBoard />
+
+         <Route path="/" exact>
+            <Home />
+         </Route>
+         <Route path="/new-question">
+            <NewQuestion />
+         </Route>
+         <Route path="/leader-board">
+            <LeaderBoard />
+         </Route>
       </>
    );
 }

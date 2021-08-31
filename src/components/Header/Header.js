@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Avatar from '../UI/Avatar';
 import { logoutUser } from '../../actions/auth';
+import { NavLink } from 'react-router-dom';
 
 import './Header.css';
 
@@ -9,9 +10,11 @@ function Header({ user, dispatch }) {
    return (
       <header>
          <ul className="menu-items">
-            <li>Home</li>
-            <li>New Question</li>
-            <li>Leader Board</li>
+            <NavLink to="/" exact>
+               Home
+            </NavLink>
+            <NavLink to="new-question">New Question</NavLink>
+            <NavLink to="leader-board">Leader Board</NavLink>
          </ul>
          {user && (
             <div className="profile">

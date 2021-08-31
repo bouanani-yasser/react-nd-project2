@@ -16,8 +16,7 @@ function Header({ user, dispatch }) {
          {user && (
             <div className="profile">
                <h5 className="username">
-                  {' '}
-                  Hello, <b>{user.name}</b>{' '}
+                  Hello, <b>{user.name}</b>
                </h5>
                <Avatar user={user} miniSize />
                <button className="btn" onClick={() => dispatch(logoutUser())}>

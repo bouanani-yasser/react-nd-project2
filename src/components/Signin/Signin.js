@@ -22,7 +22,9 @@ export const Signin = ({ users, dispatch }) => {
          <div className="signin-body">
             <h2>Sing In</h2>
             <Form.Select className="selectpicker" ref={selectRef}>
-               <option defaultValue>Select a user</option>
+               <option defaultValue disabled>
+                  Select a user
+               </option>
                {users &&
                   Object.values(users).map((user) => (
                      <option key={user.id} value={user.id}>

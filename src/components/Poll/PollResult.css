@@ -1,0 +1,38 @@
+.result .option {
+   position: relative;
+   padding: 10px;
+   margin: 20px 0;
+   border-radius: 5px;
+   border: 3px solid #198754;
+   background-color: rgb(201, 224, 230);
+}
+
+.result .option .your-vote {
+   position: absolute;
+   transform: rotateZ(20deg);
+   top: -10%;
+   right: -5%;
+   width: 60px;
+   height: 50px;
+   background-color: rgb(157, 184, 104);
+   text-align: center;
+   font-weight: bold;
+   color: #fff;
+   border-radius: 50%;
+   padding: 5px;
+   line-height: 20px;
+}
+
+.result h5 {
+   text-align: center;
+   font-weight: bold;
+   margin: 10px;
+   font-size: medium;
+}
+
+.result h6 {
+   font-size: large;
+   padding: 10px 0;
+   color: #198754;
+   min-height: 60px;
+}

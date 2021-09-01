@@ -13,8 +13,8 @@ function Header({ user, dispatch }) {
             <NavLink to="/" exact>
                Home
             </NavLink>
-            <NavLink to="new-question">New Question</NavLink>
-            <NavLink to="leader-board">Leader Board</NavLink>
+            <NavLink to="/new-question">New Question</NavLink>
+            <NavLink to="/leader-board">Leader Board</NavLink>
          </ul>
          {user && (
             <div className="profile">

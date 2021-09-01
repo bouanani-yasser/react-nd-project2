@@ -50,15 +50,15 @@ const QuestionsList = ({ unansweredQuestions, answeredQuestions, users }) => {
 
 const mapStateToProps = ({ questions, users, authedUser }) => {
    const unansweredQuestions = Object.values(questions).filter(
-      (qution) =>
-         !qution.optionOne.votes.includes(authedUser) &&
-         !qution.optionTwo.votes.includes(authedUser)
+      (question) =>
+         !question.optionOne.votes.includes(authedUser) &&
+         !question.optionTwo.votes.includes(authedUser)
    );
 
    const answeredQuestions = Object.values(questions).filter(
-      (qution) =>
-         qution.optionOne.votes.includes(authedUser) ||
-         qution.optionTwo.votes.includes(authedUser)
+      (question) =>
+         question.optionOne.votes.includes(authedUser) ||
+         question.optionTwo.votes.includes(authedUser)
    );
 
    return { unansweredQuestions, answeredQuestions, users };

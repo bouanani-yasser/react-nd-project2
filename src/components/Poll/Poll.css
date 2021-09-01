@@ -1,0 +1,28 @@
+.poll {
+   width: 90%;
+   max-width: 700px;
+   margin: 20px auto;
+}
+
+.poll .question-ctn h2 {
+   margin: 20px auto;
+}
+
+.poll .form-check {
+   margin-top: 5px auto;
+   padding: 0 25px;
+}
+
+.poll .form-check label {
+   font-size: large;
+   font-weight: 500;
+   line-height: 10px;
+}
+
+.poll .btn {
+   margin: 20px 0;
+}
+
+.poll .avatar {
+   margin: 2% !important;
+}

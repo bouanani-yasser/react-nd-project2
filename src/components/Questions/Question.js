@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from '../UI/Avatar';
+import { Link } from 'react-router-dom';
 
 function Question({ question, user }) {
    return (
@@ -14,7 +15,12 @@ function Question({ question, user }) {
                <p>
                   {question.optionOne.text} <b>or</b> ...
                </p>
-               <button className="btn btn-outline-success">View poll</button>
+               <Link
+                  to={`/poll/${user.id}/${question.id}`}
+                  className="btn btn-outline-success"
+               >
+                  View poll
+               </Link>
             </div>
          </div>
       </div>

@@ -16,6 +16,14 @@
    border-radius: 5px;
 }
 
+.leader-board .user-card .rank {
+   position: absolute;
+   top: 5%;
+   left: 2%;
+   font-size: large;
+   font-weight: bold;
+}
+
 .leader-board .user-card::before {
    content: '';
    position: absolute;
@@ -65,8 +73,13 @@
 }
 
 .leader-board .user-card .score .value {
+   width: 60px;
+   height: 60px;
+   padding: 10px;
+   text-align: center;
    border-radius: 50%;
    background-color: #198754;
    font-weight: bold;
+   line-height: 40px;
    color: #fff;
 }

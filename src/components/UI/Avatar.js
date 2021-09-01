@@ -2,9 +2,13 @@ import React from 'react';
 
 import './Avatar.css';
 
-const Avatar = ({ user, miniSize }) => {
+const Avatar = ({ user, miniSize, largeSize }) => {
    return (
-      <div className={`avatar ${miniSize && 'mini'}`}>
+      <div
+         className={`avatar ${miniSize ? 'mini' : ''} ${
+            largeSize ? 'large' : ''
+         }`}
+      >
          <img src={user.avatarURL} alt={user.name} />
       </div>
    );

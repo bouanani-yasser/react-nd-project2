@@ -10,6 +10,7 @@ import Home from './Home/Home';
 import Header from './Header/Header';
 import NewQuestion from './Questions/NewQuestion';
 import LeaderBoard from './LeaderBoard/LeaderBoard';
+import Poll from './Poll/Poll';
 
 function App({ dispatch }) {
    useEffect(() => {
@@ -20,7 +21,6 @@ function App({ dispatch }) {
       <>
          <LoadingBar style={{ backgroundColor: '#198754', height: '4px' }} />
          <Header />
-
          <Route path="/" exact>
             <Home />
          </Route>
@@ -30,6 +30,10 @@ function App({ dispatch }) {
          <Route path="/leader-board">
             <LeaderBoard />
          </Route>
+         <Route
+            path="/poll/:authorID/:questionID"
+            render={(props) => <Poll {...props} />}
+         ></Route>
       </>
    );
 }

@@ -33,9 +33,17 @@ function Poll({ author, question, answered, authedUser }) {
 
 const mapStateToProps = ({ questions, users, authedUser }, props) => {
    const { questionID } = props.match.params;
+   const { history } = props;
    const question = questions[questionID];
 
-   if (!question) return {};
+   if (!authedUser) {
+      return {};
+   }
+
+   if (!question) {
+      history.push('/404');
+      return {};
+   }
 
    const author = users[question.author];
 

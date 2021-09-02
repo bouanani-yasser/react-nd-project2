@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import './LeaderBoard.css';
 import UserCard from './UserCard';
+import './LeaderBoard.css';
 
 const LeaderBoard = ({ users, authedUser }) => {
    return !authedUser ? (

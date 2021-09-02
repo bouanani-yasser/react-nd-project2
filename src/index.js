@@ -9,6 +9,7 @@ import App from './components/App';
 import reducer from './reducers';
 import middleware from './middleware';
 
+// to use redux DevTools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(middleware));

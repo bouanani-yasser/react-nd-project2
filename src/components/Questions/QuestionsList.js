@@ -44,7 +44,7 @@ const QuestionsList = ({ unansweredQuestions, answeredQuestions, users }) => {
                     user={users[quest.author]}
                  />
               ))}
-         {unansweredQuestions.length === 0 && (
+         {unansweredQuestions.length === 0 && activeTap === 'unanswered' && (
             <h2 style={{ margin: 20, textAlign: 'center' }}>
                Great!!
                <br />

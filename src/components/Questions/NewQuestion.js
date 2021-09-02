@@ -15,6 +15,10 @@ const NewQuestion = ({ dispatch, authedUser, history }) => {
          alert('Please fill the two option texts first!!');
          return;
       }
+      if (values.opt1txt.trim() === '' || values.opt2txt.trim() === '') {
+         alert('empty spaces are not allowed, please fill the two options!!');
+         return;
+      }
       dispatch(handleNewQuestion(values.opt1txt, values.opt2txt, history));
    };
 

@@ -1,17 +1,26 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import serializeForm from 'form-serialize';
+import { connect } from 'react-redux';
+import { handleNewQuestion } from '../../actions/questions';
+import { Redirect } from 'react-router-dom';
 
 import './NewQuestion.css';
 
-const NewQuestion = () => {
+const NewQuestion = ({ dispatch, authedUser, history }) => {
    const submitHandler = (e) => {
       e.preventDefault();
       const values = serializeForm(e.target, { hash: true });
-      console.dir(values);
+      if (Object.keys(values).length !== 2) {
+         alert('Please fill the two option texts first!!');
+         return;
+      }
+      dispatch(handleNewQuestion(values.opt1txt, values.opt2txt, history));
    };
 
-   return (
+   return !authedUser ? (
+      <Redirect to="/signin" />
+   ) : (
       <div className="new-question">
          <div className="head">
             <h2>Create New Question</h2>
@@ -21,7 +30,7 @@ const NewQuestion = () => {
             <h4>Would you rather ...</h4>
             <Form onSubmit={(e) => submitHandler(e)}>
                <Form.Control
-                  name="opt1"
+                  name="opt1txt"
                   size="lg"
                   type="text"
                   placeholder="Enter option one text here"
@@ -32,7 +41,7 @@ const NewQuestion = () => {
                </div>
 
                <Form.Control
-                  name="opt2"
+                  name="opt2txt"
                   size="lg"
                   type="text"
                   placeholder="Enter option two text here"
@@ -44,4 +53,6 @@ const NewQuestion = () => {
    );
 };
 
-export default NewQuestion;
+const mapStateToProps = ({ authedUser }) => ({ authedUser });
+
+export default connect(mapStateToProps)(NewQuestion);

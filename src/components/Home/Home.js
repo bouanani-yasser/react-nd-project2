@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import QuestionsList from '../Questions/QuestionsList';
-import Signin from '../Signin/Signin';
 
 function Home({ authedUser }) {
-   return <div>{authedUser ? <QuestionsList /> : <Signin />}</div>;
+   return (
+      <div>{authedUser ? <QuestionsList /> : <Redirect to="/signin" />}</div>
+   );
 }
 
 const mapStateToProps = ({ authedUser }) => ({ authedUser });

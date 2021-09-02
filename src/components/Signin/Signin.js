@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 
 import { setAuthedUser } from '../../actions/auth';
+import { Redirect } from 'react-router-dom';
 import './Signin.css';
 
-export const Signin = ({ users, dispatch }) => {
+const Signin = ({ users, dispatch, authedUser }) => {
    const selectRef = useRef();
 
    const signIn = () => {
@@ -13,7 +14,9 @@ export const Signin = ({ users, dispatch }) => {
          selectRef.current.options[selectRef.current.selectedIndex].value;
       dispatch(setAuthedUser(userId));
    };
-   return (
+   return authedUser ? (
+      <Redirect to="/" />
+   ) : (
       <div className="signin">
          <div className="signin-head">
             <h2>Welcome to the Would You Rather App!</h2>
@@ -40,6 +43,6 @@ export const Signin = ({ users, dispatch }) => {
    );
 };
 
-const mapStateToProps = ({ users }) => ({ users });
+const mapStateToProps = ({ users, authedUser }) => ({ users, authedUser });
 
 export default connect(mapStateToProps)(Signin);

@@ -44,21 +44,36 @@ const QuestionsList = ({ unansweredQuestions, answeredQuestions, users }) => {
                     user={users[quest.author]}
                  />
               ))}
+         {unansweredQuestions.length === 0 && (
+            <h2 style={{ margin: 20, textAlign: 'center' }}>
+               Great!!
+               <br />
+               it seems you've answered all questions
+            </h2>
+         )}
       </div>
    );
 };
 
 const mapStateToProps = ({ questions, users, authedUser }) => {
-   const unansweredQuestions = Object.values(questions).filter(
+   let unansweredQuestions = Object.values(questions).filter(
       (question) =>
          !question.optionOne.votes.includes(authedUser) &&
          !question.optionTwo.votes.includes(authedUser)
    );
 
-   const answeredQuestions = Object.values(questions).filter(
+   let answeredQuestions = Object.values(questions).filter(
       (question) =>
          question.optionOne.votes.includes(authedUser) ||
          question.optionTwo.votes.includes(authedUser)
+   );
+
+   unansweredQuestions = unansweredQuestions.sort(
+      (a, b) => b.timestamp - a.timestamp
+   );
+
+   answeredQuestions = answeredQuestions.sort(
+      (a, b) => b.timestamp - a.timestamp
    );
 
    return { unansweredQuestions, answeredQuestions, users };

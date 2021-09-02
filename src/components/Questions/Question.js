@@ -16,7 +16,7 @@ function Question({ question, user }) {
                   {question.optionOne.text} <b>or</b> ...
                </p>
                <Link
-                  to={`/poll/${user.id}/${question.id}`}
+                  to={`/question/${question.id}`}
                   className="btn btn-outline-success"
                >
                   View poll

@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import './LeaderBoard.css';
 import UserCard from './UserCard';
 
-const LeaderBoard = ({ users }) => {
-   return (
+const LeaderBoard = ({ users, authedUser }) => {
+   return !authedUser ? (
+      <Redirect to="/signin" />
+   ) : (
       <div className="leader-board">
          {users.map((user, index) => (
             <UserCard key={user.id} user={user} rank={index + 1} />
@@ -14,8 +17,9 @@ const LeaderBoard = ({ users }) => {
    );
 };
 
-const mapStateToProps = ({ users }) => ({
+const mapStateToProps = ({ users, authedUser }) => ({
    // Sort users depend on their score
+   authedUser,
    users: Object.values(users).sort((a, b) => {
       const score_a =
          Object.keys(a.answers).length + Object.keys(a.questions).length;

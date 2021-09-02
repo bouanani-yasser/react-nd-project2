@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Avatar from '../UI/Avatar';
-import './Poll.css';
 import PollForm from './PollForm';
 import PollResult from './PollResult';
+import './Poll.css';
 
 function Poll({ author, question, answered, authedUser }) {
-   return (
+   return !authedUser ? (
+      <Redirect to="/" />
+   ) : (
       <div className="question poll">
          <div className="question-head">
             {!answered ? (
@@ -29,9 +32,12 @@ function Poll({ author, question, answered, authedUser }) {
 }
 
 const mapStateToProps = ({ questions, users, authedUser }, props) => {
-   const { authorID, questionID } = props.match.params;
+   const { questionID } = props.match.params;
    const question = questions[questionID];
-   const author = users[authorID];
+
+   if (!question) return {};
+
+   const author = users[question.author];
 
    const currentUser = users[authedUser];
    const answered = Object.keys(currentUser.answers).find(

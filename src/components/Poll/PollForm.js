@@ -1,16 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import serializeForm from 'form-serialize';
 
-const PollForm = ({ question }) => {
+import { handleNewVote } from '../../actions/questions';
+
+const PollForm = ({ question, dispatch }) => {
+   const submitHandler = (e) => {
+      e.preventDefault();
+      const values = serializeForm(e.target, { hash: true });
+      dispatch(handleNewVote(question.id, values.opt));
+   };
+
    return (
       <div className="question-ctn">
          <h2>Would you rather ...</h2>
-         <form>
+         <form
+            onSubmit={(e) => {
+               submitHandler(e);
+            }}
+         >
             <div className="form-check">
                <input
                   defaultChecked
                   className="form-check-input"
                   type="radio"
                   name="opt"
+                  value="optionOne"
                   id="opt1"
                />
                <label className="form-check-label" htmlFor="opt1">
@@ -26,6 +41,7 @@ const PollForm = ({ question }) => {
                   className="form-check-input"
                   type="radio"
                   name="opt"
+                  value="optionTwo"
                   id="opt2"
                />
                <label className="form-check-label" htmlFor="opt2">
@@ -39,4 +55,4 @@ const PollForm = ({ question }) => {
    );
 };
 
-export default PollForm;
+export default connect()(PollForm);

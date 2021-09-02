@@ -36,15 +36,14 @@ const mapStateToProps = ({ questions, users, authedUser }, props) => {
    const { history } = props;
    const question = questions[questionID];
 
-   if (!authedUser) {
-      return {};
-   }
-
    if (!question) {
       history.push('/404');
       return {};
    }
 
+   if (!authedUser) {
+      return {};
+   }
    const author = users[question.author];
 
    const currentUser = users[authedUser];

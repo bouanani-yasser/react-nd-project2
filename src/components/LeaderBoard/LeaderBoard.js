@@ -5,9 +5,14 @@ import { Redirect } from 'react-router-dom';
 import UserCard from './UserCard';
 import './LeaderBoard.css';
 
-const LeaderBoard = ({ users, authedUser }) => {
+const LeaderBoard = ({ users, authedUser, location }) => {
    return !authedUser ? (
-      <Redirect to="/signin" />
+      <Redirect
+         to={{
+            pathname: '/signin',
+            state: { from: location },
+         }}
+      />
    ) : (
       <div className="leader-board">
          {users.map((user, index) => (

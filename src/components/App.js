@@ -33,12 +33,14 @@ function App({ dispatch }) {
                path="/add"
                render={(props) => <NewQuestion {...props} />}
             ></Route>
-            <Route path="/leaderboard">
-               <LeaderBoard />
-            </Route>
-            <Route path="/signin">
-               <Signin />
-            </Route>
+            <Route
+               path="/leaderboard"
+               render={(props) => <LeaderBoard {...props} />}
+            ></Route>
+            <Route
+               path="/signin"
+               render={(props) => <Signin {...props} />}
+            ></Route>
             <Route
                path="/question/:questionID"
                render={(props) => <Poll {...props} />}

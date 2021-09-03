@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 import './NewQuestion.css';
 
-const NewQuestion = ({ dispatch, authedUser, history }) => {
+const NewQuestion = ({ dispatch, authedUser, history, location }) => {
    const submitHandler = (e) => {
       e.preventDefault();
       const values = serializeForm(e.target, { hash: true });
@@ -23,7 +23,12 @@ const NewQuestion = ({ dispatch, authedUser, history }) => {
    };
 
    return !authedUser ? (
-      <Redirect to="/signin" />
+      <Redirect
+         to={{
+            pathname: '/signin',
+            state: { from: location },
+         }}
+      />
    ) : (
       <div className="new-question">
          <div className="head">

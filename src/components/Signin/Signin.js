@@ -6,8 +6,9 @@ import { setAuthedUser } from '../../actions/auth';
 import { Redirect } from 'react-router-dom';
 import './Signin.css';
 
-const Signin = ({ users, dispatch, authedUser }) => {
+const Signin = ({ users, dispatch, authedUser, location }) => {
    const selectRef = useRef();
+   const { from } = location.state || { from: { pathname: '/' } };
 
    const signIn = () => {
       const userId =
@@ -15,7 +16,7 @@ const Signin = ({ users, dispatch, authedUser }) => {
       dispatch(setAuthedUser(userId));
    };
    return authedUser ? (
-      <Redirect to="/" />
+      <Redirect to={from} />
    ) : (
       <div className="signin">
          <div className="signin-head">
